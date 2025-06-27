@@ -1,0 +1,24 @@
+workflows:
+  ios-app:
+    name: HabitGrow iOS Build
+    environment:
+      vars:
+        XCODE_WORKSPACE: ""
+        XCODE_PROJECT: "HabitGrow.xcodeproj"
+        XCODE_SCHEME: "HabitGrow"
+      xcode: latest
+      cocoapods: false
+    scripts:
+      - name: Build .ipa
+        script: |
+          xcodebuild -project "$XCODE_PROJECT" -scheme "$XCODE_SCHEME" -configuration Release -sdk iphoneos -archivePath $CM_BUILD_DIR/HabitGrow.xcarchive archive
+          xcodebuild -exportArchive -archivePath $CM_BUILD_DIR/HabitGrow.xcarchive -exportOptionsPlist exportOptions.plist -exportPath $CM_BUILD_DIR/exported
+    artifacts:
+      - $CM_BUILD_DIR/exported/*.ipa
+    publishing:
+      email:
+        recipients:
+          - tosunmuhammedyusuf67@gmail.com
+        notify:
+          success: true
+          failure: true 
