@@ -6,7 +6,6 @@ workflows:
         XCODE_PROJECT: "HabitGrow.xcodeproj"
         XCODE_SCHEME: "HabitGrow"
       xcode: latest
-      cocoapods: false
     scripts:
       - name: Build .ipa
         script: |
