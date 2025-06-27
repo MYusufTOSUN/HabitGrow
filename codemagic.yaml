@@ -3,7 +3,6 @@ workflows:
     name: HabitGrow iOS Build
     environment:
       vars:
-        XCODE_WORKSPACE: ""
         XCODE_PROJECT: "HabitGrow.xcodeproj"
         XCODE_SCHEME: "HabitGrow"
       xcode: latest
